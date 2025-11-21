@@ -77,22 +77,24 @@ function App() {
         
         {/* Header */}
         <header className="p-4 flex justify-between items-center border-b border-white/10 bg-slate-900/50 sticky top-0 z-50 backdrop-blur-md">
-          <div className="flex items-center gap-2">
-            <div className="bg-blue-500 p-2 rounded-lg">
+          <div className="flex items-center gap-2 group cursor-default">
+            <div className="bg-blue-500 p-2 rounded-lg group-hover:scale-110 group-hover:bg-blue-400 transition-all duration-300 shadow-lg shadow-blue-500/20">
               <Car className="text-white w-6 h-6" />
             </div>
-            <h1 className="text-xl font-bold text-white tracking-tight">Urban<span className="text-blue-400">Flow</span></h1>
+            <h1 className="text-xl font-bold text-white tracking-tight">Urban<span className="text-blue-400 group-hover:text-blue-300 transition-colors">Flow</span></h1>
           </div>
           <div className="flex gap-2">
              <button 
                 onClick={() => setViewMode(ViewMode.MAP)}
-                className={`p-2 rounded-lg transition-all ${viewMode === ViewMode.MAP ? 'bg-blue-500/20 text-blue-300' : 'text-slate-400 hover:text-white'}`}
+                className={`p-2 rounded-lg transition-all duration-300 ${viewMode === ViewMode.MAP ? 'bg-blue-500/20 text-blue-300 scale-105' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}
+                title="Carte"
              >
                <MapPin className="w-6 h-6" />
              </button>
              <button 
                 onClick={() => setViewMode(ViewMode.ANALYTICS)}
-                className={`p-2 rounded-lg transition-all ${viewMode === ViewMode.ANALYTICS ? 'bg-blue-500/20 text-blue-300' : 'text-slate-400 hover:text-white'}`}
+                className={`p-2 rounded-lg transition-all duration-300 ${viewMode === ViewMode.ANALYTICS ? 'bg-blue-500/20 text-blue-300 scale-105' : 'text-slate-400 hover:text-white hover:bg-white/5'}`}
+                title="Analytique"
              >
                <BarChart3 className="w-6 h-6" />
              </button>
@@ -104,31 +106,31 @@ function App() {
           
           {/* Stats Row */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <GlassCard className="p-4 flex flex-col items-center justify-center">
-              <span className="text-slate-400 text-xs uppercase tracking-wider font-semibold">Libres</span>
-              <span className="text-3xl font-bold text-green-400">{stats.available}</span>
+            <GlassCard className="p-4 flex flex-col items-center justify-center hover:-translate-y-1 hover:bg-white/10 hover:border-white/20 group cursor-default">
+              <span className="text-slate-400 text-xs uppercase tracking-wider font-semibold group-hover:text-slate-300 transition-colors">Libres</span>
+              <span className="text-3xl font-bold text-green-400 group-hover:scale-110 transition-transform duration-300">{stats.available}</span>
             </GlassCard>
-            <GlassCard className="p-4 flex flex-col items-center justify-center">
-              <span className="text-slate-400 text-xs uppercase tracking-wider font-semibold">Occupées</span>
-              <span className="text-3xl font-bold text-red-400">{stats.occupied}</span>
+            <GlassCard className="p-4 flex flex-col items-center justify-center hover:-translate-y-1 hover:bg-white/10 hover:border-white/20 group cursor-default">
+              <span className="text-slate-400 text-xs uppercase tracking-wider font-semibold group-hover:text-slate-300 transition-colors">Occupées</span>
+              <span className="text-3xl font-bold text-red-400 group-hover:scale-110 transition-transform duration-300">{stats.occupied}</span>
             </GlassCard>
-            <GlassCard className="p-4 flex flex-col items-center justify-center">
-              <span className="text-slate-400 text-xs uppercase tracking-wider font-semibold">Taux</span>
-              <span className="text-3xl font-bold text-blue-400">{stats.occupancyRate}%</span>
+            <GlassCard className="p-4 flex flex-col items-center justify-center hover:-translate-y-1 hover:bg-white/10 hover:border-white/20 group cursor-default">
+              <span className="text-slate-400 text-xs uppercase tracking-wider font-semibold group-hover:text-slate-300 transition-colors">Taux</span>
+              <span className="text-3xl font-bold text-blue-400 group-hover:scale-110 transition-transform duration-300">{stats.occupancyRate}%</span>
             </GlassCard>
             <button 
               onClick={handleAiAnalysis}
               disabled={isAnalyzing}
-              className="bg-gradient-to-br from-violet-600 to-indigo-600 rounded-xl p-4 flex flex-col items-center justify-center shadow-lg hover:shadow-indigo-500/30 transition-all disabled:opacity-50 active:scale-95 border border-indigo-400/30"
+              className="group bg-gradient-to-br from-violet-600 to-indigo-600 rounded-xl p-4 flex flex-col items-center justify-center shadow-lg hover:shadow-indigo-500/40 transition-all duration-300 disabled:opacity-50 active:scale-95 border border-indigo-400/30 hover:border-indigo-300/50 hover:-translate-y-1"
             >
-              {isAnalyzing ? <RefreshCw className="w-6 h-6 animate-spin text-white" /> : <BrainCircuit className="w-6 h-6 text-white mb-1" />}
-              <span className="text-white text-xs font-bold">{isAnalyzing ? 'Analyse...' : 'IA Prediction'}</span>
+              {isAnalyzing ? <RefreshCw className="w-6 h-6 animate-spin text-white" /> : <BrainCircuit className="w-6 h-6 text-white mb-1 group-hover:rotate-12 transition-transform" />}
+              <span className="text-white text-xs font-bold group-hover:text-indigo-100">{isAnalyzing ? 'Analyse...' : 'IA Prediction'}</span>
             </button>
           </div>
 
           {/* Gemini Insight Panel */}
           {aiAnalysis && (
-            <GlassCard className="p-4 animate-fade-in border-l-4 border-l-indigo-500">
+            <GlassCard className="p-4 animate-fade-in border-l-4 border-l-indigo-500 hover:bg-white/10 transition-colors">
               <div className="flex gap-3">
                 <div className="mt-1">
                   <BrainCircuit className="w-5 h-5 text-indigo-400" />
@@ -151,25 +153,25 @@ function App() {
               <>
                 {viewMode === ViewMode.MAP && (
                   <div className="h-full w-full relative group">
-                    <GlassCard className="h-full w-full overflow-hidden p-1">
+                    <GlassCard className="h-full w-full overflow-hidden p-1 ring-1 ring-white/5 hover:ring-white/20 transition-all">
                       <MapComponent spots={spots} />
                     </GlassCard>
                     
                     {/* Floating Search Bar */}
                     <div className="absolute top-4 left-4 right-4 z-[400]">
-                      <div className="relative">
-                        <Search className="absolute left-3 top-3 w-5 h-5 text-slate-400" />
+                      <div className="relative group/search">
+                        <Search className="absolute left-3 top-3 w-5 h-5 text-slate-400 group-hover/search:text-blue-400 transition-colors" />
                         <input 
                           type="text" 
                           placeholder="Rechercher une zone (ex: Place du Martroi)..." 
-                          className="w-full bg-slate-900/80 backdrop-blur-xl border border-white/20 rounded-xl py-2.5 pl-10 pr-4 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-xl"
+                          className="w-full bg-slate-900/80 backdrop-blur-xl border border-white/20 rounded-xl py-2.5 pl-10 pr-4 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-xl hover:bg-slate-800/90 hover:border-white/30 transition-all duration-300"
                         />
                       </div>
                     </div>
 
                     {/* Quick Locate FAB */}
-                    <button className="absolute bottom-6 right-6 z-[400] bg-blue-600 p-3 rounded-full shadow-lg shadow-blue-600/40 hover:bg-blue-500 transition-colors">
-                      <Navigation className="w-6 h-6 text-white" />
+                    <button className="absolute bottom-6 right-6 z-[400] bg-blue-600 p-3 rounded-full shadow-lg shadow-blue-600/40 hover:bg-blue-500 hover:scale-110 hover:rotate-3 active:scale-95 transition-all duration-300 group/fab">
+                      <Navigation className="w-6 h-6 text-white group-hover/fab:animate-pulse" />
                     </button>
                   </div>
                 )}

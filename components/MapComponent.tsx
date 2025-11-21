@@ -64,18 +64,18 @@ const MapComponent: React.FC<MapComponentProps> = ({ spots }) => {
             spot.status === 'occupied' ? redIcon : blueIcon
           }
         >
-          <Popup className="glass-popup">
-            <div className="p-1 text-slate-800">
-              <h3 className="font-bold text-sm">{spot.address}</h3>
-              <div className="flex items-center gap-2 mt-1">
-                <span className={`text-xs px-2 py-0.5 rounded-full text-white ${
-                  spot.status === 'available' ? 'bg-green-500' : 'bg-red-500'
+          <Popup className="glass-popup" closeButton={false}>
+            <div className="text-slate-200">
+              <h3 className="font-bold text-sm mb-1">{spot.address}</h3>
+              <div className="flex items-center gap-2 mt-2">
+                <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${
+                  spot.status === 'available' ? 'bg-green-500/20 text-green-400 border border-green-500/30' : 'bg-red-500/20 text-red-400 border border-red-500/30'
                 }`}>
                   {spot.status === 'available' ? 'Libre' : 'Occupé'}
                 </span>
                 {spot.status === 'occupied' && (
-                  <span className="text-xs text-slate-500">
-                    Dispo probable: {spot.probability}%
+                  <span className="text-xs text-slate-400">
+                    Dispo probable: <span className="text-blue-400">{spot.probability}%</span>
                   </span>
                 )}
               </div>
