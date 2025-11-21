@@ -1,0 +1,7 @@
+{
+  "name": "UrbanFlow Parking",
+  "description": "Application de stationnement intelligent en temps réel avec prédictions IA et visualisation urbaine.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
